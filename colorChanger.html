@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Changer</title>
+</head>
+
+<body>
+    <div id="main">
+        <button type="button" name="btn_change" onclick="randomChange()">Change Background</button>
+        <br />
+        <select name="slct_color" id="slct_color">
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="orange">Orange</option>
+            <option value="pink">Pink</option>
+            <option value="red">Red</option>
+        </select>
+    </div>
+
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        div#main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {            
+            padding: 1rem 2rem 1rem 2rem;
+            background-color: #272726;
+            color: gainsboro;
+            border: 2px solid #272726;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            border-radius: 5rem;
+            outline: none;
+            margin-bottom: 3rem;
+        }
+
+        button:hover {
+            color: #272726;
+            background-color: #f3f1f1;
+        }
+
+        select {
+            padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+            background-color: #272726;
+            color: gainsboro;
+            border: 2px solid #272726;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bolder;
+            outline: none;
+            margin-bottom: 3rem;
+        }
+    </style>
+    <script>
+
+        let btn_change = document.getElementById("btn_change");
+        let slct_color = document.getElementById("slct_color");
+
+        slct_color.addEventListener("click", colorSelect);
+
+        let colorList = ["#86d154b9", "#006280", "#f3763d", "#fa72a6", "#d33833"];
+
+
+        function randomChange() {
+
+            let numeroRandom = Math.round(Math.random() * 4, 10);
+            console.log("numero" + numeroRandom);
+            document.body.style.backgroundColor = colorList[numeroRandom];
+
+        }
+
+        function colorSelect() {
+            let colorSelected;
+            let colorCode
+
+            colorSelected = document.getElementById("slct_color").value;
+            console.log(colorSelected);
+
+            switch (colorSelected) {
+                case "green":
+                    colorCode = colorList[0];
+                    break;
+                case "blue":
+                    colorCode = colorList[1];
+                    break;
+                case "orange":
+                    colorCode = colorList[2];
+                    break;
+                case "pink":
+                    colorCode = colorList[3];
+                    break;
+                case "red":
+                    colorCode = colorList[4];
+                    break;
+
+                default:
+                    break;
+            }
+
+            document.body.style.backgroundColor = colorCode;
+        }
+
+    </script>
+</body>
+
+</html>
